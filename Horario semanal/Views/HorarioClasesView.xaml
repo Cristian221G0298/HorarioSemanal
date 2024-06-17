@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Horario_semanal.Views.HorarioClasesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Horario_semanal.Views"
+             xmlns:viewmodels="clr-namespace:Horario_semanal.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ClasesViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#043A6F">
+    <StackPanel>
+        
+        <WrapPanel Height="35" Margin="2">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="30"/>
+                    <Setter Property="Margin" Value="3"/>
+                    <Setter Property="Background" Value="SteelBlue"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Style>
+            </WrapPanel.Resources>
+            <Button Content="➕" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:VistasClases.Agregar}"/>
+            <Button Content="🗑️" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:VistasClases.Eliminar}"/>
+            <Button Content="✏️" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:VistasClases.Editar}"/>
+            <Button Content="👁️" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:VistasClases.Detalles}"/>
+            <Button FontFamily="ArialRounded" FontSize="16" FontWeight="Bold" Background="LightSalmon" Width="215" Content="Ver horario de Actividades" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:VistasClases.ListaA}"/>
+        </WrapPanel>
+
+        <DataGrid ItemsSource="{Binding Clases}" SelectedItem="{Binding Clase}" SelectionMode="Single" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" BorderBrush="White" BorderThickness="1" CanUserSortColumns="False" Foreground="SteelBlue" FontWeight="Bold" FontSize="16">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Asignatura}" IsReadOnly="True" Header="Asignatura" Width="6*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="SteelBlue"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Dia}" IsReadOnly="True" Header="Día" Width="2*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="SteelBlue"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Hora}" IsReadOnly="True" Header="Hora" Width="2*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="SteelBlue"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </StackPanel>
+</UserControl>

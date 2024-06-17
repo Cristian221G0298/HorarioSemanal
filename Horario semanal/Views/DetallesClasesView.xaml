@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Horario_semanal.Views.DetallesClasesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Horario_semanal.Views"
+             xmlns:viewmodels="clr-namespace:Horario_semanal.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#90000000">
+    <Border Background="#043A6F" Width="500" Height="200" BorderBrush="White" BorderThickness="6">
+        <StackPanel>
+            <DockPanel>
+                <Button DockPanel.Dock="Right" Content="✖️" Foreground="White" Background="SteelBlue" FontSize="16" Margin="1" Width="30" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:VistasClases.Lista}"/>
+                <TextBlock Margin="5, 5, 5, 0" Foreground="White" FontFamily="ArialRounded" FontSize="24" FontWeight="Bold"><Run Text="{Binding Clase.Dia}"/> a las <Run Text="{Binding Clase.Hora}"/> horas</TextBlock>
+            </DockPanel>
+            <StackPanel Margin="0, 10, 0, 5" Background="SteelBlue">
+                <TextBlock HorizontalAlignment="Center" Margin="5" Foreground="White" FontFamily="ArialRounded" FontSize="20" FontWeight="Bold">Asignatura: <Run Text="{Binding Clase.Asignatura}"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="5" Foreground="White" FontFamily="ArialRounded" FontSize="20" FontWeight="Bold">Docente: <Run Text="{Binding Clase.Maestro}"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="5" Foreground="White" FontFamily="ArialRounded" FontSize="20" FontWeight="Bold">Aula: <Run Text="{Binding Clase.Aula}"/></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
